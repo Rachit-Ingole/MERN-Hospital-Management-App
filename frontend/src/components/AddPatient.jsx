@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 export default function AddPatient(props) {
     const [formData,setFormData] = useState({name:"",age:"",gender:"",disease:"",room:""})
     const [formError,setFormError] = useState(null)
-    const {setPage,setPList,pList} = props;
+    const {setPage,setPList,pList,updatePatientList} = props;
     function handleAddPatient(e){
         e.preventDefault()
         if(!formData.name || !formData.age || !formData.disease){
@@ -12,12 +12,23 @@ export default function AddPatient(props) {
         }
         let newFormData = {...formData}
         if(!newFormData.gender){
-            newFormData.gender = "Prefer Not to Say"
+            newFormData.gender = "prefer not to say"
         }
         if(!newFormData.room){
             newFormData.room = -1;
         }
-        setPList([...pList,newFormData])
+        const API_URL = 'http://localhost:3000/api/v1/patients'
+        const addPatients = async () => {
+            try {
+                await axios.post(API_URL, { newFormData })
+                updatePatientList()
+            } catch (error) {
+                console.log(error)
+            }
+          }
+      
+        addPatients();
+        
         setFormData({name:"",age:"",gender:"",disease:"",room:""})
         setPage("PatientList");
     }
@@ -38,11 +49,12 @@ export default function AddPatient(props) {
             </div>
             <div className='w-full text-2xl'>
                 <h1 className='text-white m-1'>Gender:-</h1>
-                <select id="gender" className='w-full rounded-md p-1' onChange={(e)=>{setFormData({...formData,gender:e.target.value})}} selected={formData.gender}>
+                <select id="gender" className='w-full rounded-md p-1' onChange={(e)=>{setFormData({...formData,gender:e.target.value})}} selected={formData.gender} >
+                    <option value="prefer not to say" >Prefer Not to Say</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="transgender">Transgender</option>
-                    <option value="prefer not to say">Prefer Not to Say</option>
+                    
                 </select>
             </div>
             <div className='w-full text-2xl'>

@@ -5,7 +5,11 @@ const connectDB = require('./db/connect')
 const port = process.env.PORT || 3000
 const patients = require('./routes/patients')
 const notFound = require('./middleware/not-found');
-const errorHandlerMiddleware = require('./middleware/error-handler');
+const errorHandlerMiddleware = require('./middleware/error-handler')
+
+var cors = require('cors')
+
+app.use(cors())
 
 app.use(express.json())
 app.use('/api/v1/patients', patients)

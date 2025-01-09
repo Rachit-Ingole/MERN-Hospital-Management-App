@@ -15,8 +15,8 @@ const PatientSchema = new mongoose.Schema({
   },
   gender:{
     type:String,
-    enum:['prefer not to say','male','female','transgender'],
-    default:'prefer not to say'
+    enum:['Prefer not to say','Male','Female','Transgender'],
+    default:'Prefer not to say'
   },
   disease:{
     type:String,
