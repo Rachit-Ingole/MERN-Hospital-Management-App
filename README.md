@@ -19,16 +19,16 @@ This project is a simple web application built using the MERN stack (MongoDB, Ex
 ## Setup and Installation
 1. **Clone the Repository**:
     ```sh
-    git clone https://github.com/yourusername/patient-list.git
+    git clone https://github.com/Rachit-Ingole/MERN-Hospital-Management-App
     ```
 2. **Install Dependencies**:
     Navigate to the root directory and install server-side dependencies:
     ```sh
     npm install
     ```
-    Then, navigate to the `client` directory and install client-side dependencies:
+    Then, navigate to the `frontend` directory and install client-side dependencies:
     ```sh
-    cd client
+    cd frontend
     npm install
     ```
 3. **Set Up Environment Variables**:
@@ -43,12 +43,10 @@ This project is a simple web application built using the MERN stack (MongoDB, Ex
     ```
     Start the client:
     ```sh
-    cd client
+    cd frontend
     npm start
     ```
 
 ## Usage
 - Open your browser and navigate to `http://localhost:3000` to access the application.
 - Use the navigation menu to add, update, delete, and search for patient records.
-
-## File Structure
